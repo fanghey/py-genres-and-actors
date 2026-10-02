@@ -1,37 +1,21 @@
 import init_django_orm  # noqa: F401
 
+from typing import Any
+
 from db.models import Actor, Genre
 
 
-def main():
+def main() -> Any:
     Genre.objects.create(name="Western")
     Genre.objects.create(name="Action")
     Genre.objects.create(name="Drama")
 
-    Actor.objects.create(
-        first_name="George",
-        last_name="Clooney",
-    )
-    Actor.objects.create(
-        first_name="Keanu",
-        last_name="Reeves",
-    )
-    Actor.objects.create(
-        first_name="Scarlett",
-        last_name="Keegan",
-    )
-    Actor.objects.create(
-        first_name="Will",
-        last_name="Smith",
-    )
-    Actor.objects.create(
-        first_name="Jaden",
-        last_name="Smith",
-    )
-    Actor.objects.create(
-        first_name="Scarlett",
-        last_name="Johansson",
-    )
+    Actor.objects.create(first_name="George", last_name="Clooney")
+    Actor.objects.create(first_name="Keanu", last_name="Reeves")
+    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
+    Actor.objects.create(first_name="Will", last_name="Smith")
+    Actor.objects.create(first_name="Jaden", last_name="Smith")
+    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
 
     drama = Genre.objects.get(name="Drama")
     drama.name = "Drama"
