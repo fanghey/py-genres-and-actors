@@ -6,26 +6,45 @@ from db.models import Actor, Genre
 
 
 def main() -> Any:
-    Genre.objects.create(name="Western")
-    Genre.objects.create(name="Action")
-    Genre.objects.create(name="Drama")
+    genres = [
+        ("Western",),
+        ("Action",),
+        ("Dramma",),
+    ]
 
-    Actor.objects.create(first_name="George", last_name="Clooney")
-    Actor.objects.create(first_name="Keanu", last_name="Reeves")
-    Actor.objects.create(first_name="Scarlett", last_name="Keegan")
-    Actor.objects.create(first_name="Will", last_name="Smith")
-    Actor.objects.create(first_name="Jaden", last_name="Smith")
-    Actor.objects.create(first_name="Scarlett", last_name="Johansson")
+    actors = [
+        ("George", "Klooney"),
+        ("Kianu", "Reaves"),
+        ("Scarlett", "Keegan"),
+        ("Will", "Smith"),
+        ("Jaden", "Smith"),
+        ("Scarlett", "Johansson"),
+    ]
 
-    drama = Genre.objects.get(name="Drama")
+    for genre in genres:
+        Genre.objects.create(name=genre[0])
+
+    for actor in actors:
+        Actor.objects.create(
+            first_name=actor[0],
+            last_name=actor[1],
+        )
+
+    drama = Genre.objects.get(name="Dramma")
     drama.name = "Drama"
     drama.save()
 
-    george = Actor.objects.get(first_name="George")
+    george = Actor.objects.get(
+        first_name="George",
+        last_name="Klooney",
+    )
     george.last_name = "Clooney"
     george.save()
 
-    keanu = Actor.objects.get(last_name="Reeves")
+    keanu = Actor.objects.get(
+        first_name="Kianu",
+        last_name="Reaves",
+    )
     keanu.first_name = "Keanu"
     keanu.last_name = "Reeves"
     keanu.save()
